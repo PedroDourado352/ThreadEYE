@@ -5,3 +5,5 @@ cd meu-projeto
 npm install
 npm run dev
 
+# Estrutura do projeto
+
