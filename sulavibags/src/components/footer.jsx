@@ -8,8 +8,7 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Brand */}
           <div>
-            <div className="footer-brand-name">SulaviBags</div>
-            <div className="footer-brand-tag">Moda & Elegância</div>
+            <div className="footer-brand-name">Sulavi Bags</div>
             <p className="footer-brand-desc">
               Bolsas artesanais brasileiras com acabamento premium.
               Criadas para mulheres que celebram cada detalhe.
@@ -19,18 +18,6 @@ export default function Footer() {
               <a href="#" className="social-btn" aria-label="Instagram">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-              </a>
-              {/* TikTok */}
-              <a href="#" className="social-btn" aria-label="TikTok">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.54V6.79a4.85 4.85 0 01-1.01-.1z"/>
-                </svg>
-              </a>
-              {/* Pinterest */}
-              <a href="#" className="social-btn" aria-label="Pinterest">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.16 1.22-5.16s-.31-.63-.31-1.56c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.58 2.26-.87 3.51-.25 1.05.52 1.9 1.55 1.9 1.86 0 3.11-2.4 3.11-5.24 0-2.16-1.46-3.78-4.1-3.78-2.99 0-4.85 2.24-4.85 4.75 0 .86.25 1.47.64 1.94.18.21.2.3.14.54-.05.18-.16.62-.2.8-.07.26-.27.35-.5.25-1.4-.57-2.05-2.11-2.05-3.83 0-2.84 2.4-6.26 7.17-6.26 3.84 0 6.38 2.79 6.38 5.79 0 3.96-2.2 6.93-5.43 6.93-1.09 0-2.12-.59-2.47-1.25l-.67 2.59c-.24.92-.72 1.84-1.1 2.56.83.26 1.71.4 2.63.4 5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
                 </svg>
               </a>
               {/* WhatsApp */}
@@ -50,14 +37,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Policies */}
-          <div>
-            <div className="footer-col-title">Políticas</div>
-            <ul className="footer-links">
-              {policyLinks.map(l => <li key={l}><a href="#" className="footer-link">{l}</a></li>)}
-            </ul>
-          </div>
-
           {/* Contact */}
           <div>
             <div className="footer-col-title">Contato</div>
@@ -69,21 +48,13 @@ export default function Footer() {
               </div>
               (11) 99999-9999
             </div>
-            <div className="contact-item">
-              <div className="contact-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              contato@sulavibags.com.br
-            </div>
             <div className="contact-item" style={{ alignItems: 'flex-start' }}>
               <div className="contact-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
                 </svg>
               </div>
-              São Paulo, SP — Brasil
+              Paulista, PE — Brasil
             </div>
           </div>
         </div>

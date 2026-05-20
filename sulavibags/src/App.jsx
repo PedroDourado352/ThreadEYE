@@ -4,8 +4,6 @@ import Hero from './components/Hero'
 import Categories from './components/Categories'
 import Products from './components/Products'
 import About from './components/About'
-import Testimonials from './components/Testimonials'
-import Newsletter from './components/Newsletter'
 import Footer from './components/footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
 
@@ -18,8 +16,6 @@ export default function App() {
         <Categories />
         <Products />
         <About />
-        <Testimonials />
-        <Newsletter />
       </main>
       <Footer />
       <WhatsAppFloat />

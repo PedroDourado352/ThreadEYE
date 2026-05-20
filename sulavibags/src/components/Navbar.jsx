@@ -22,8 +22,7 @@ export default function Navbar() {
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
         <div className="navbar-inner">
           <a href="#" className="navbar-logo">
-            <span className="navbar-logo-name">SulaviBags</span>
-            <span className="navbar-logo-tag">Moda &amp; Elegância</span>
+            <span className="navbar-logo-name">Sulavi Bags</span>
           </a>
 
           <ul className="navbar-links">
@@ -39,22 +38,6 @@ export default function Navbar() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
               </svg>
-            </button>
-            <button className="navbar-icon-btn" aria-label="Carrinho">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
-              </svg>
-              <span className="cart-badge">2</span>
-            </button>
-            <a href="#colecoes" className="navbar-shop">Ver Coleção</a>
-            <button
-              className={`navbar-hamburger${open ? ' open' : ''}`}
-              aria-label="Menu"
-              onClick={() => setOpen(v => !v)}
-            >
-              <span className="h-line" />
-              <span className="h-line" />
-              <span className="h-line" />
             </button>
           </div>
         </div>
