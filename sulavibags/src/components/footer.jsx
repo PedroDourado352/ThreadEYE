@@ -1,5 +1,4 @@
 const navLinks = ['Início', 'Coleções', 'Sobre nós', 'Blog', 'Contato']
-const policyLinks = ['Política de Privacidade', 'Termos de Uso', 'Trocas e Devoluções', 'FAQ']
 
 export default function Footer() {
   return (
