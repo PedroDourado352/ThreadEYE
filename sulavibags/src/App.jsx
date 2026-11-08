@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 const icons = {
@@ -13,7 +13,7 @@ const icons = {
 }
 
 function Logo() {
-  return <div className="brand"><span className="brand-mark">✦</span><span>SULAVI</span><small>INTELLIGENCE</small></div>
+  return <div className="brand"><span className="brand-mark">✦</span><span>THREAT</span><small>EYE</small></div>
 }
 
 function Sidebar({ active, onChange }) {
@@ -36,7 +36,7 @@ function Sidebar({ active, onChange }) {
         ))}
       </nav>
       <div className="sidebar-bottom">
-        <button className="nav-item"><span className="nav-icon">{icons.help}</span>Ajuda</button>
+        <button className={`nav-item ${active === 'help' ? 'active' : ''}`} onClick={() => onChange('help')}><span className="nav-icon">{icons.help}</span>Ajuda</button>
         <div className="profile"><div className="avatar">PD</div><div><strong>Pedro Dourado</strong><small>Administrador</small></div><span>•••</span></div>
       </div>
     </aside>
@@ -86,9 +86,60 @@ function Assistant() {
   </div>
 }
 
+function PageHeader({ section, title, description }) {
+  return <header className="topbar"><div><p className="breadcrumb">Workspace / {section}</p><h1>{title}</h1>{description && <p className="muted">{description}</p>}</div><div className="top-actions"><button className="icon-button">⌕</button><button className="notification">♢<i /></button><div className="top-avatar">PD</div></div></header>
+}
+
+function Files() {
+  return <div className="page-content"><PageHeader section="Arquivos" title="Arquivos" description="Gerencie os documentos que alimentam a inteligência da SULAVI." /><UploadCard /><section className="files-info-card"><span className="tip-icon">✦</span><div><h2>Organize sua base de conhecimento</h2><p className="muted">Arquivos processados ficam disponíveis para consulta no Assistente.</p></div><button className="purple-button">+ Adicionar arquivo</button></section></div>
+}
+
+function Settings() {
+  return <div className="page-content"><PageHeader section="Configurações" title="Configurações" description="Personalize seu workspace e sua experiência com a SULAVI." /><section className="settings-card"><div className="settings-title"><span className="settings-icon">⚙</span><div><h2>Preferências do workspace</h2><p className="muted">Essas configurações se aplicam a todos os seus arquivos.</p></div></div><label className="setting-row"><span><strong>Nome do workspace</strong><small>Como seu workspace será identificado.</small></span><input defaultValue="Meu workspace" /></label><label className="setting-row"><span><strong>Respostas detalhadas</strong><small>Receba respostas com mais contexto e referências.</small></span><input className="toggle" type="checkbox" defaultChecked /></label><label className="setting-row"><span><strong>Notificações</strong><small>Receba atualizações sobre o processamento de arquivos.</small></span><input className="toggle" type="checkbox" defaultChecked /></label><button className="purple-button settings-save">Salvar alterações</button></section></div>
+}
+
+function Help() {
+  const questions = ['Como adicionar um arquivo?', 'Quais formatos são aceitos?', 'Como conversar com meus documentos?', 'Meus dados estão seguros?']
+  return <div className="page-content"><PageHeader section="Ajuda" title="Como podemos ajudar?" description="Encontre respostas rápidas para começar a usar a SULAVI." /><section className="help-card"><div className="help-search">⌕<input placeholder="Busque uma dúvida..." /></div><div className="faq-list">{questions.map((question) => <button key={question} className="faq-row"><span>{question}</span><b>+</b></button>)}</div><div className="help-contact"><span>✦</span><div><strong>Não encontrou o que precisava?</strong><small>Fale com nosso suporte e responderemos em breve.</small></div><button className="text-button">Entrar em contato →</button></div></section></div>
+}
+
+const routes = {
+  home: '/',
+  files: '/arquivos',
+  assistant: '/assistente',
+  settings: '/configuracoes',
+  help: '/ajuda',
+}
+
+function routeFromPath(pathname) {
+  return Object.entries(routes).find(([, path]) => path === pathname)?.[0] || 'home'
+}
+
 function App() {
-  const [active, setActive] = useState('home')
-  return <div className="app-shell"><Sidebar active={active} onChange={setActive} /><main className="main-area">{active === 'assistant' ? <Assistant /> : <Home goAssistant={() => setActive('assistant')} />}</main></div>
+  const [active, setActive] = useState(() => routeFromPath(window.location.pathname))
+
+  useEffect(() => {
+    const handlePopState = () => setActive(routeFromPath(window.location.pathname))
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  const navigate = (nextRoute) => {
+    const nextPath = routes[nextRoute]
+    if (nextPath !== window.location.pathname) window.history.pushState({}, '', nextPath)
+    setActive(nextRoute)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const page = {
+    home: <Home goAssistant={() => navigate('assistant')} />,
+    files: <Files />,
+    assistant: <Assistant />,
+    settings: <Settings />,
+    help: <Help />,
+  }[active]
+
+  return <div className="app-shell"><Sidebar active={active} onChange={navigate} /><main className="main-area">{page}</main></div>
 }
 
 export default App
